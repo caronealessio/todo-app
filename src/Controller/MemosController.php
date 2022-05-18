@@ -44,8 +44,15 @@ class MemosController extends AppController{
      */
     public function view($slug = null)
     {
+        if($this->Authentication->getIdentity() == null){
+            $logged=false;
+        }else{
+            $logged=true;
+        }
+        
         $memo = $this->Memos->findBySlug($slug)->firstOrFail();
         $this->set(compact('memo'));
+        $this->set('logged', $logged);
     }
 
     /**

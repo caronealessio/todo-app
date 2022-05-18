@@ -14,8 +14,10 @@ $time = FrozenDate::now()->addDays(2);
 <table>
     <tr>
         <th>Title</th>
-        <th>Scadenza</th>
+        <th>Expiration Date</th>
+        <?php if($logged) : ?>
         <th>Action</th>
+        <?php endif; ?>
     </tr>
 
 
@@ -38,15 +40,15 @@ $time = FrozenDate::now()->addDays(2);
                 <?= $memo->expiration_date->format(DATE_RFC850) ?>
             </td>
 
+            <?php if($logged) : ?>
             <td>
-                <?= $this->Html->link('Edit', ['action' => 'edit', $memo->slug]) ?>
+                <?= $this->Html->link('Edit', ['action' => 'edit', $memo->slug]); ?>
                 <?= $this->Form->postLink(
-                    'Delete',
-                    ['action' => 'delete', $memo->slug],
-                    ['confirm' => 'Are you sure?'])
-                ?>
+                        'Delete',
+                        ['action' => 'delete', $memo->slug],
+                        ['confirm' => 'Are you sure?']); ?>             
             </td>
-
+            <?php endif; ?>        
         <?php echo '</tr>' ?> 
     <?php endforeach; ?>
 </table>

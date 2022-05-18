@@ -8,6 +8,7 @@
     echo $this->Form->control('expiration_date', ['type' => 'datetime']); 
     echo $this->Form->control('prioritary', ['type' => 'checkbox', 'hiddenField' => 'false']);
     echo $this->Form->control('public', ['type' => 'checkbox', 'hiddenField' => 'false']);
-    echo $this->Form->button(__('Save Memo'));
+    echo $this->Form->button(__('Save Memo'));   
     echo $this->Form->end();
+    echo $this->Html->link("Back", ['action' => 'index', 'controller' => 'Memos']);
 ?>
